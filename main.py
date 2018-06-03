@@ -30,7 +30,7 @@ def find_end_of_first(txt):
 		while (stack[-1][0] in "KACE" and stack[-1][1]==2) or (stack[-1][0]=="N" and stack[-1][1]==1):
 			print(stack.pop())
 			stack[-1][1]+=1
-		if stack[0][1]==1:
+		if stack[0][1]==1 or len(stack)==0:
 			j=i+1
 			break
 	return j
@@ -40,9 +40,9 @@ def tokenize(txt):
 		print(find_end_of_first(txt))
 		return(Connective(txt[0], tokenize(txt[1:find_end_of_first(txt)]),tokenize(txt[find_end_of_first(txt):])))
 	elif txt[0] =="N":
-		return Negation(txt[1:])
+		return Negation(tokenize(txt[1:]))
 	elif txt[0] in string.ascii_lowercase:
 		return Token(txt[0])
 
 print(str(tokenize('KNap')))
-print(str(tokenize('EKApNqNCqpr')))
+print(str(tokenize('NEKApNqNCqpr')))
