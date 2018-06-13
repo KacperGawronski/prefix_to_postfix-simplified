@@ -43,5 +43,6 @@ def tokenize(txt):
 	elif txt[0] in string.ascii_lowercase:
 		return Token(txt[0])
 
-print(str(tokenize('KNap')))
-print(str(tokenize('NEKApNqNCqpr')))
+#print(str(tokenize('KNap')))
+#print(str(tokenize('NEKApNqNCqpr')))
+print(tokenize(input()))
