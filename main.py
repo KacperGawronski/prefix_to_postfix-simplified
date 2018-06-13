@@ -28,7 +28,7 @@ def find_end_of_first(txt):
 		elif txt[i] in "KACEN":
 			stack.append([txt[i],0])
 		while (stack[-1][0] in "KACE" and stack[-1][1]==2) or (stack[-1][0]=="N" and stack[-1][1]==1):
-			print(stack.pop())
+			stack.pop()
 			stack[-1][1]+=1
 		if stack[0][1]==1 or len(stack)==0:
 			j=i+1
@@ -37,7 +37,6 @@ def find_end_of_first(txt):
 			
 def tokenize(txt):
 	if txt[0] in "KACE":
-		print(find_end_of_first(txt))
 		return(Connective(txt[0], tokenize(txt[1:find_end_of_first(txt)]),tokenize(txt[find_end_of_first(txt):])))
 	elif txt[0] =="N":
 		return Negation(tokenize(txt[1:]))
